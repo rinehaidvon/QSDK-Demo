@@ -1,5 +1,5 @@
 # QSDK-Demo
-These are resources. Include build tools, and other useful information.
+this project include a demo and toolchain for QCA4531. 
 
 "find ./toolchain-mips_34kc_gcc-4.8-linaro_uClibc-1.0.14/ -type f -print0 | xargs -0 md5sum | sort > md5_check.txt"
 
