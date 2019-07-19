@@ -1,0 +1,35 @@
+
+set(APP_NAME "demo")
+
+set(PLATFORM_NAME   "qca4531")
+
+#set(ARCH_NAME "")
+
+set(OS_NAME "linux")
+
+add_definitions(-DOS_LINUX)
+
+SET(TOOLCHAIN_DIR "/home/wells/toolchain/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-1.0.14")
+
+INCLUDE (CMakeForceCompiler)
+SET(CMAKE_SYSTEM_NAME Linux)     # this one is important
+SET(CMAKE_SYSTEM ${CMAKE_SYSTEM_NAME})
+
+SET (CMAKE_SYSROOT ${TOOLCHAIN_DIR})
+SET(CMAKE_INCLUDE_PATH ${TOOLCHAIN_DIR}/usr/include)
+SET (CMAKE_LIBRARY_PATH ${TOOLCHAIN_DIR}/usr/lib ${TOOLCHAIN_DIR}/lib32)
+# Set up the compilers and the flags
+SET (CMAKE_C_COMPILER ${TOOLCHAIN_DIR}/bin/mips-openwrt-linux-gcc)
+SET (CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/bin/mips-openwrt-linux-g++)
+
+# This is the file system root of the target
+SET (CMAKE_FIND_ROOT_PATH ${TOOLCHAIN_DIR})
+# Search for programs in the build host directories
+SET (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# For libraries and headers in the target directories
+SET (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+###toolchain configuration-end
+
+include_directories(${TOOLCHAIN_DIR}/usr/include)
+link_directories(${CMAKE_LIBRARY_PATH})
